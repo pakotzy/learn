@@ -1,0 +1,67 @@
+commands:
+  - kubectl get <resource-type> <resource-name>:
+    description: Display one or many resources
+    params:
+      - <resource-type>:
+        - all: all resources
+        - ns: Namespaces - a way to split ony physical cluster into multiple virtual
+        - pods: Pods - a set of Docker containers
+        - nodes: Nodes - a set of resources needed to run Pods. Contains kubelet, runtime and kube-proxy
+        - deployments: Deployments - a set of instructions to Pods and Replica Sets
+        - services: Services - a set of instuction to expose running Pods to a network service
+        - rs: ReplicaSets - maintains a stable set of running Pods
+      - <resource-name>: optional, needed to look deeper into a single resource
+      - -n: filter by Namespaces
+      - -o: 
+        - wide: print more details
+        - yaml: print full config in yaml format
+      - --show-labels: print labels
+      - -l: select by labels
+  - kubectl create -f <file-name>:
+    description: Create resource from a file or stdin
+    params:
+      - f: path to the yaml configuration file
+  - kubectl set <subcommand> <resource-name>:
+    description: Make changes to existing application resources
+    params:
+      - <subcommand>:
+        - env: enviroment variables
+        - image: existing images
+        - resources: compute resource requirements
+  - kubectl replace -f <file-name>:
+    description: Replace a resource by filename or stdin
+    params:
+      - -f: target yaml config file
+  - kubectl label <resource-type> <resource-name> <label-key=label-value>:
+    description: Update labels on a resource
+  - kubectl expose <resource-type> <resource-name>:
+    description: Expose a resource as a new Kubernetes service
+    params:
+      - --port: the port that the service should serve on 
+      - --target-port: port on the container that the service should direct traffic to
+  - kubectl edit <resource-name>:
+    description: Edit a resource directly from the default editor
+  - kubectl apply -f <file-name>:
+    description: Apply a configuration to a resource by filename or stdin
+    params:
+      - -f: path to the yaml configuration file
+  - kubectl delete <resource-type> <resource-name>:
+    secription: Delete resources by filenames, stdin, resources and names, or by resources and label selector
+  - kubectl rollout <subcommand> <resource-name>:
+    description: Manage the rollout of a resource
+    params:
+      - <subcommand>:
+        - history: previous rollout revisions and configurations
+        - pause: mark the provided resource as paused, supported only by deployments
+        - status: a status of the lates rollout
+        - undo: rollback a previous rollout
+  - kubectl logs <pod-name>:
+    description: Print the logs for a container in a pod or specified resource
+  - kubectl describe <resource-type> <resource-name>:
+    description: Show details of a specific resource or group of resources
+  - kubectl exec <pod-name> <command>:
+    description: Execute a command in a container
+    params:
+      - -it: interactive terminal
+  - kubectl cp <file-source> <resource-name:file-destination>:
+    description: Copy files and directories to and from containers

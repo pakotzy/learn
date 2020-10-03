@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: k8s-commands
+spec:
+  template:
+    metadata:
+      labels:
+        app: k8s-commands
+    spec:
+      containers:
+      - name: k8s-commands
+        image: localhost:5000/pakotzy/learn/kubernetes/commands
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      restartPolicy: Never
+  backoffLimit: 1

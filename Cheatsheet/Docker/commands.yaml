@@ -1,0 +1,35 @@
+commands:
+    - docker pull <image-name>:
+        description: Pull images from the docker repository
+        params:
+            - --rm: delete container on exit
+            - -it: interactive terminal
+            - -d: detached state, runs in the background
+    - docker ps:
+        description: Show all the running and exited containers
+        params:
+            - -l: show the latest created container
+    - docker exec -it <container-id> bash:
+        description: Access the running container
+    - docker stop <container-id>:
+        description: Stops a running container. Gives time to shutdown gracefully
+    - docker kill <container-id>:
+        description: Immediately kills a running container
+    - docker commit <conatainer-id> <user-name/image-name:tag>:
+        description: Creates a new image of an edited container on the local system
+    - docker login:
+        description: Login to the docker hub repository
+    - docker push <user-name/image-name:tag>:
+        description: Push an image to the docker hub repository
+    - docker images:
+        description: Lists all the locally stored images
+    - docker rm <container-id>:
+        description: Delete stopped container
+    - docker rmi <image-id>:
+        description: Delete an image
+    - docker system prune:
+        description: Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes
+        params:
+            - -a: remove all unused images not just dangling ones
+    - docker build <path-to-Dockerfile-folder>:
+        description: Build an image from specified Dockerfile
