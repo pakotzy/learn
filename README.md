@@ -1,3 +1,3 @@
-# Collection of learning materials from different courses I've attended
+# Building a Reactive App with Angular and Spring Boot 2
 
-This repository uses a branch per course strategy.
+https://www.linkedin.com/learning/building-a-reactive-app-with-angular-and-spring-boot-2/spring-initializr?u=2113185
