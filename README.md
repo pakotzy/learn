@@ -1,3 +1,3 @@
-# Collection of learning materials from different courses I've attended
+# Matirials from Learning Kubernetes course on Linkedin Learning
 
-This repository uses a branch per course strategy.
+https://www.linkedin.com/learning/learning-kubernetes
