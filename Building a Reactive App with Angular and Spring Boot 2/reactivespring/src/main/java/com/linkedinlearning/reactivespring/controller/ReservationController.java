@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -33,6 +34,11 @@ public class ReservationController {
     @GetMapping("{id}")
     public Mono<Reservation> getReservationById(@PathVariable String id) {
         return reservationService.getReservationById(id);
+    }
+
+    @GetMapping
+    public Flux<Reservation> getAllReservations() {
+        return reservationService.getAllReservations();
     }
 
     @PostMapping

@@ -12,6 +12,10 @@ export class ReservationService {
   private apiPath: string = '/api/v1';
   private reservationUrl: string = this.baseUrl + this.apiPath + '/reservation';
 
+  getReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(this.reservationUrl);
+  }
+
   createReservation(body: ReservationRequest): Observable<Reservation> {
     let httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})

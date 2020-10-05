@@ -14,10 +14,13 @@ export class AppComponent {
 
   rooms: Room[];
   roomSearchForm: FormGroup;
+
   checkIn: Date;
   checkOut: Date;
   roomNumber: number;
   price: number;
+
+  reservations: Reservation[];
 
   ngOnInit() {
     this.roomSearchForm = new FormGroup({
@@ -39,16 +42,24 @@ export class AppComponent {
 
     this.rooms = [new Room("1", "1", "199"), new Room("2", "2", "199"), new Room("3", "3", "299"),
         new Room("4", "4", "399"), new Room("5", "5", "499"), new Room("6", "6", "599")];
+
+    this.getReservations();
+  }
+
+  getReservations() {
+    this.reservationService.getReservations()
+      .subscribe(result => {
+        console.log(result);
+        this.reservations = result;
+      })
   }
 
   createReservation() {
     this.reservationService.createReservation(new ReservationRequest({
       checkIn: this.checkIn, checkOut: this.checkOut, roomNumber: this.roomNumber, price: this.price
     }))
-      .subscribe(result => {
-        console.log(result);
-      });
-  };
+      .subscribe(result => this.reservations.push(result));
+  }
 }
 
 export class Room {
