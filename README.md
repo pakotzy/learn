@@ -1,1 +1,1 @@
-# Collection of useful matirials about different topics gathered during some course completions
+# Collection of useful materials about different topics gathered during some course completions
