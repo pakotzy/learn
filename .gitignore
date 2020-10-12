@@ -1,5 +1,14 @@
-/target/
+**/target/
 !.mvn/wrapper/maven-wrapper.jar
+
+### VisualStudioCode ###
+.vscode
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
 
 ### STS ###
 .apt_generated
@@ -15,11 +24,3 @@
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
