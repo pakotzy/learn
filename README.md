@@ -1,3 +1,3 @@
-# Collection of learning materials from different courses I've attended
+# Microservices Architecture Intensive
 
-This repository uses a branch per course strategy.
+https://learn.epam.com/detailsPage?id=067ea9b9-25d6-40c4-9396-07478c0dcf66
