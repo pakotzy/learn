@@ -9,6 +9,16 @@ Project to cover all tasks from Microservices Architecture Intensive. Transition
     - Administrator: CRUD Products and Orders
     - Client: R Proudcts, CRUD owned Orders
 
+### Run
+- Deploy
+```bash
+docker-compose up -d
+```
+- Run
+```bash
+./mvnw spring-boot:run
+```
+
 # TODO
 - [] Monolith
     - [] JAR
