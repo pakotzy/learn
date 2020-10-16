@@ -24,3 +24,7 @@
 *.iws
 *.iml
 *.ipr
+
+### Package ###
+package.log
+**/package.log
