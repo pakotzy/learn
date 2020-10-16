@@ -5,7 +5,7 @@ import com.pakotzy.mai.product.dao.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(path = "product")
+@RepositoryRestResource(path = "products")
 public interface ProductRepository extends MongoRepository<Product, String> {
     
 }

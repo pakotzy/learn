@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import feign.FeignException;
+
 @RestController
 public class OrderController {
     private final ProductRepository productRepository;
@@ -20,9 +22,11 @@ public class OrderController {
         this.orderRepository = orderRepository;
     }
 
-    @PostMapping("product/{productId}/order")
+    @PostMapping("products/{productId}/orders")
     public Order createOrderByProductId(@PathVariable String productId) {
-        if (productRepository.existsById(productId) == null) {
+        try {
+            productRepository.existsById(productId);
+        } catch (FeignException.NotFound ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There is no Product with given Id: " + productId);
         }
 
