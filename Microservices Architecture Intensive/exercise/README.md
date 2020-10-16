@@ -20,9 +20,9 @@ docker-compose up -d
 ```
 
 # TODO
-- [] Monolith
-    - [] JAR
-    - [] Docker compose
+- [x] Monolith
+    - [x] JAR
+    - [x] Docker compose
 - [] Microservices
     - [] Multi-module POM
     - [] JARs
