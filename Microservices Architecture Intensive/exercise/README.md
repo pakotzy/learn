@@ -23,13 +23,13 @@ docker-compose up -d
 - [x] Monolith
     - [x] JAR
     - [x] Docker compose
-- [ ] Microservices
-    - [ ] Multi-module POM
-    - [ ] JARs
-    - [ ] Docker compose
+- [x] Microservices
+    - [x] Multi-module POM
+    - [x] JARs
+    - [x] Docker compose
 - [ ] Externalized configurations: Spring Cloud Config
 - [ ] Service Discovery: Eureka
-- [ ] Binder: OpenFeign
+- [x] Binder: OpenFeign
 - [ ] Centralized Log
 - [ ] Client Side Load Balancing: Ribbon
 - [ ] Server Side Load Balancing: Zuul
