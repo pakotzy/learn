@@ -1,6 +1,6 @@
 commands:
-    - docker pull <image-name>:
-        description: Pull images from the docker repository
+    - docker run <image-name>:
+        description: Run images
         params:
             - --rm: delete container on exit
             - -it: interactive terminal
@@ -19,6 +19,8 @@ commands:
         description: Creates a new image of an edited container on the local system
     - docker login:
         description: Login to the docker hub repository
+    - docker pull <image-name>:
+        description: Pull images from the docker repository
     - docker push <user-name/image-name:tag>:
         description: Push an image to the docker hub repository
     - docker images:
