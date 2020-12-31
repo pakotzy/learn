@@ -6,34 +6,56 @@ services:
     ports:
       - "27017:27017"
 
-  config-server:
+  discovery:
+    build: eureka-server
+    environment:
+      NAME: ${DISCOVERY_NAME}
+      PORT: '8761'
+    ports:
+      - "8761:8761"
+
+  config:
     build: config-server
+    environment:
+      NAME: ${CONFIG_NAME}
+      PORT: '8888'
+      DISCOVERY_URL: ${DISCOVERY_URL}
+      JAVA_OPTS: ${JAVA_OPTS}
     ports:
       - "8888:8888"
+      - "5005:8000"
+    depends_on:
+      - discovery
 
   product:
     build: product
     environment:
-      - CONFIG_SERVER_URL=http://config-server:8888
+      NAME: product
+      DISCOVERY_URL: ${DISCOVERY_URL}
+      CONFIG_NAME: ${CONFIG_NAME}
     deploy:
       restart_policy:
         condition: on-failure
     ports:
         - "8081:8080"
     depends_on:
-      - config-server
+      - discovery
+      - config
       - mongo
 
   order:
     build: order
     environment:
-      - CONFIG_SERVER_URL=http://config-server:8888
+      NAME: order
+      DISCOVERY_URL: ${DISCOVERY_URL}
+      CONFIG_NAME: ${CONFIG_NAME}
     deploy:
       restart_policy:
         condition: on-failure
     ports:
         - "8082:8080"
     depends_on:
-      - config-server
+      - discovery
+      - config
       - mongo
       - product

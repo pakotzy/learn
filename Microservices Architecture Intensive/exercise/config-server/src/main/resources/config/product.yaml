@@ -2,6 +2,7 @@ spring:
   data:
     mongodb:
       host: mongo
+
 logging:
   level:
     com:

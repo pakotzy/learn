@@ -7,7 +7,7 @@ Project to cover all tasks from Microservices Architecture Intensive. Transition
     - Order
 - Security
     - Administrator: CRUD Products and Orders
-    - Client: R Proudcts, CRUD owned Orders
+    - Client: R Products, CRUD owned Orders
 
 ### Run
 - Deploy
@@ -27,8 +27,8 @@ docker-compose up -d
     - [x] Multi-module POM
     - [x] JARs
     - [x] Docker compose
-- [ ] Externalized configurations: Spring Cloud Config
-- [ ] Service Discovery: Eureka
+- [x] Externalized configurations: Spring Cloud Config
+- [X] Service Discovery: Eureka
 - [x] Binder: OpenFeign
 - [ ] Centralized Log
 - [ ] Client Side Load Balancing: Ribbon

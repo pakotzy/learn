@@ -1,8 +1,11 @@
 server:
-    port: 8888
+    port: ${PORT}
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: ${DISCOVERY_URL}
 
 spring:
-    application:
-        name: config-server
     profiles:
         active: native
