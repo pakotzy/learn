@@ -30,7 +30,7 @@ docker-compose up -d
 - [x] Externalized configurations: Spring Cloud Config
 - [x] Service Discovery: Consul ~~Eureka~~
 - [x] Binder: OpenFeign
-- [ ] Client Side Load Balancing: Spring Cloud LoadBalancer ~~Ribbon~~
+- [x] Client Side Load Balancing: Spring Cloud LoadBalancer ~~Ribbon~~
 - [ ] Api Gateway: Spring Cloud Gateway ~~Zuul~~
 - [ ] Circuit Breaker: Hystrix
 - [ ] Security: JWT, OAuth
