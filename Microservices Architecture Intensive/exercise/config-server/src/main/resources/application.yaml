@@ -1,11 +1,6 @@
 server:
     port: ${PORT}
 
-eureka:
-    client:
-        serviceUrl:
-            defaultZone: ${DISCOVERY_URL}
-
 spring:
     profiles:
         active: native

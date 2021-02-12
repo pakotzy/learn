@@ -7,19 +7,18 @@ services:
       - "27017:27017"
 
   discovery:
-    build: eureka-server
-    environment:
-      NAME: ${DISCOVERY_NAME}
-      PORT: '8761'
+    image: consul
     ports:
-      - "8761:8761"
+      - "8500:8500"
+      - "8600:8600/udp"
+    command: agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0
 
   config:
     build: config-server
     environment:
       NAME: ${CONFIG_NAME}
       PORT: '8888'
-      DISCOVERY_URL: ${DISCOVERY_URL}
+      DISCOVERY_NAME: ${DISCOVERY_NAME}
       JAVA_OPTS: ${JAVA_OPTS}
     ports:
       - "8888:8888"
@@ -31,7 +30,7 @@ services:
     build: product
     environment:
       NAME: product
-      DISCOVERY_URL: ${DISCOVERY_URL}
+      DISCOVERY_NAME: ${DISCOVERY_NAME}
       CONFIG_NAME: ${CONFIG_NAME}
     deploy:
       restart_policy:
@@ -47,7 +46,7 @@ services:
     build: order
     environment:
       NAME: order
-      DISCOVERY_URL: ${DISCOVERY_URL}
+      DISCOVERY_NAME: ${DISCOVERY_NAME}
       CONFIG_NAME: ${CONFIG_NAME}
     deploy:
       restart_policy:

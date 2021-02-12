@@ -28,12 +28,12 @@ docker-compose up -d
     - [x] JARs
     - [x] Docker compose
 - [x] Externalized configurations: Spring Cloud Config
-- [X] Service Discovery: Eureka
+- [x] Service Discovery: Consul ~~Eureka~~
 - [x] Binder: OpenFeign
-- [ ] Centralized Log
-- [ ] Client Side Load Balancing: Ribbon
-- [ ] Server Side Load Balancing: Zuul
+- [ ] Client Side Load Balancing: Spring Cloud LoadBalancer ~~Ribbon~~
+- [ ] Api Gateway: Spring Cloud Gateway ~~Zuul~~
 - [ ] Circuit Breaker: Hystrix
 - [ ] Security: JWT, OAuth
 - [ ] Distributed transactions: SAGA
+- [ ] Centralized Log
 - [ ] Cloud Deployment: AWS
