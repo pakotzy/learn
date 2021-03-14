@@ -1,6 +1,0 @@
-server:
-    port: ${PORT}
-
-spring:
-    profiles:
-        active: native
