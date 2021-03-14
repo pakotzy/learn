@@ -37,16 +37,23 @@ docker-compose up -d
   To work effectively requires Service Discovery and Load Balancer.
     - Otherwise requires an explicit path to the server provided into `@FeignClient`
 ### Client Side Load Balancing: Spring Cloud LoadBalancer
-  Included through Consul Discovery.
+  Included through Consul Discovery and Gateway, and probably all major Spring Cloud components.
     - Ribbon implementation has to be explicitly excluded since it's also included in Consul Discovery package and is used by default.
-    - Services that depend on some kind of load balancer need to have Ribbon explicitly disabled by `spring.cloud.loadbalancer.ribbon.enabled=false`
-      * Also affects tests.
+    - Services that depend on some kind of load balancer need to have `Ribbon` explicitly disabled (also affects tests):
+      * `spring.cloud.loadbalancer.ribbon.enabled=false`
+      * exclude `spring-cloud-netflix-ribbon`
 ### Api Gateway: Spring Cloud Gateway
   Routes aren't picked up when set via Config Server.
   Pattern matching is wired, you can't set `**/` at beginning to filter anything before. Full path is required.
+### Circuit Breaker: Hystrix
+  Requires `spring-cloud-starter-netflix-hystrix`.
+  Hystrix autoconfigures in `Greenwich` but doesn't in `Hoxton`
+    * Requires at least a default config provided by `Customizer<...CircuitBreakerFactory>` bean.
+  Be careful, won't work if `Ribbon` dependency is on classpath, even when it is disabled in properties.
 
 # TODO
 ### Current
+- [ ] Look into Resilience4J, seems like it is newer and under active development.
 ### Features
 - [x] Monolith
     - [x] JAR
@@ -60,7 +67,7 @@ docker-compose up -d
 - [x] Binder: OpenFeign
 - [x] Client Side Load Balancing: Spring Cloud LoadBalancer ~~Ribbon~~
 - [x] Api Gateway: Spring Cloud Gateway ~~Zuul~~
-- [ ] Circuit Breaker: Hystrix
+- [ ] Circuit Breaker: Resilience4J ~~Hystrix~~
 - [ ] Centralized Log: ELK
 - [ ] Security: JWT, OAuth
 - [ ] Distributed transactions: SAGA
