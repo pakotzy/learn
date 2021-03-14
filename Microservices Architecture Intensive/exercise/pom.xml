@@ -34,7 +34,8 @@
     </dependencyManagement>
 
     <modules>
-        <module>config-server</module>
+        <module>config</module>
+        <module>gateway</module>
         <module>product</module>
         <module>order</module>
     </modules>

@@ -26,12 +26,27 @@ services:
     depends_on:
       - discovery
 
+  gateway:
+    build: gateway
+    environment: &service-environment
+      <<: *infrastructure-environment
+      NAME: ${GATEWAY_NAME}
+      PORT: '8080'
+      CONFIG_NAME: ${CONFIG_NAME}
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8083:8080"
+    depends_on:
+      - discovery
+      - config
+
   product: &service
     build: product
-    environment:  &service-environment
+    environment:
+      <<: *service-environment
       NAME: product
-      DISCOVERY_NAME: ${DISCOVERY_NAME}
-      CONFIG_NAME: ${CONFIG_NAME}
     deploy:
       restart_policy:
         condition: on-failure
@@ -39,7 +54,6 @@ services:
         - "8081:8080"
     depends_on:
       - discovery
-      - config
       - mongo
 
   order:
@@ -52,6 +66,5 @@ services:
         - "8082:8080"
     depends_on:
       - discovery
-      - config
       - mongo
       - product

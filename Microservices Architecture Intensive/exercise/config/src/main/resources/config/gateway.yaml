@@ -1,0 +1,18 @@
+server:
+  port: ${PORT}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      loadbalancer:
+        ribbon:
+          enabled: false
