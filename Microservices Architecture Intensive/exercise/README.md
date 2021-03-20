@@ -45,7 +45,10 @@ docker-compose up -d
 ### Api Gateway: Spring Cloud Gateway
   Routes aren't picked up when set via Config Server.
   Pattern matching is wired, you can't set `**/` at beginning to filter anything before. Full path is required.
-### Circuit Breaker: Hystrix
+### Circuit Breaker: Resilience4J
+  Requires `spring-cloud-starter-circuitbreaker-reactor-resilience4j` and `resilience4j-circuitbreaker`
+  Couldn't understand how to use default auto-configuration. But at least I understand something about it, and documentation is better.
+### ~~Circuit Breaker: Hystrix~~
   Requires `spring-cloud-starter-netflix-hystrix`.
   Hystrix autoconfigures in `Greenwich` but doesn't in `Hoxton`
     * Requires at least a default config provided by `Customizer<...CircuitBreakerFactory>` bean.
@@ -53,7 +56,7 @@ docker-compose up -d
 
 # TODO
 ### Current
-- [ ] Look into Resilience4J, seems like it is newer and under active development.
+- [ ] Test. Worked and then stopped.
 ### Features
 - [x] Monolith
     - [x] JAR
@@ -72,3 +75,4 @@ docker-compose up -d
 - [ ] Security: JWT, OAuth
 - [ ] Distributed transactions: SAGA
 - [ ] Cloud Deployment: AWS
+- [ ] Testing: Testconteiners
